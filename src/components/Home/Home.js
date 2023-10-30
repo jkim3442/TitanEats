@@ -1,17 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Home.css"
 
-function Signin() {
+function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>TitanEats</h1>
-        <button><Link to="/signin">Sign-In</Link></button>
-        <br></br>
-        <button><Link to="/restaurants">Restaurant List</Link></button>
+    <div className="Home">
+      <iframe src="https://www.youtube.com/embed/lF19DBs39Xg?si=pM1mK1tOKSgPagkh&amp;controls=0&amp;start=20&autoplay=1&mute=1&loop=1&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div className="Home-content">
+      <header className="Home-header">
+        <h1 id="Home-title">TitanEats</h1>
       </header>
+      <div className="Home-links">
+        <Link to="/signin">Sign-In</Link>
+        <Link to="/createaccount">Create Account</Link>
+        <Link to="/restaurants">Restaurants</Link> 
+      </div>
+    </div>
     </div>
   );
 } 
 
-export default Signin;
+export default Home;
