@@ -1,22 +1,45 @@
 import React, { Component } from 'react';
 
 class ShoppingCart extends Component {
+  state = {
+    isCartOpen: false,
+  };
+
+  toggleCart = () => {
+    this.setState((prevState) => ({
+      isCartOpen: !prevState.isCartOpen,
+    }));
+  };
+
   render() {
+    const { cart, removeFromCart, checkout } = this.props;
+    const { isCartOpen } = this.state;
+    const cartItemCount = cart.length; // Calculate the number of items in the cart
+
     return (
-      <section className="shopping-cart">
-        <h2>Shopping Cart</h2>
-        <ul>
-          {/* Display cart items with a "Remove" button */}
-          {this.props.cart.map((item, index) => (
-            <li key={index}>
-              {item.item} - ${item.price.toFixed(2)}
-              <button onClick={() => this.props.removeFromCart(index)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-        <p>Total: ${this.props.cart.reduce((total, item) => total + item.price, 0).toFixed(2)}</p>
-        <button onClick={this.props.checkout}>Checkout</button>
-      </section>
+      <div className="shopping-cart">
+        <button className="shopping-cart-toggle" onClick={this.toggleCart}>
+          <img src="cart-icon.png" alt="Cart" />
+          {cartItemCount > 0 && (
+            <span className="cart-badge">{cartItemCount}</span>
+          )}
+        </button>
+        {isCartOpen && (
+          <div className="shopping-cart-sidebar">
+            <h3>Your Shopping Cart</h3>
+            <ul>
+              {cart.map((item, index) => (
+                <li key={index}>
+                  {item.item} - ${item.price.toFixed(2)}
+                  <button onClick={() => removeFromCart(index)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+            <p>Total: ${cart.reduce((total, item) => total + item.price, 0).toFixed(2)}</p>
+            <button onClick={checkout}>Checkout</button>
+          </div>
+        )}
+      </div>
     );
   }
 }
