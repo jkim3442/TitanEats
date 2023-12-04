@@ -1,0 +1,37 @@
+.Profile {
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  background: navy;
+  top: 0px;
+  left: 0px;
+
+  .Heading {
+    color: orange;
+  }
+  .firstName {
+    text-align: left;
+    font-size: 10px;
+  }
+
+  .enterFirst {
+    text-align: left;
+    font-size: 10px;
+    background: transparent;
+    border: line;
+  }
+  .lastName {
+    text-align: left;
+    font-size: 10px;
+    padding: 30px 0px;
+  }
+  .userName {
+    text-align: left;
+    font-size: 10px;
+  }
+  .email {
+    text-align: left;
+    font-size: 10px;
+    padding: 30px 0px;
+  }
+}
