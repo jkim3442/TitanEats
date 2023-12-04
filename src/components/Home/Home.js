@@ -12,7 +12,6 @@ function Home() {
       </header>
       <div className="Home-links">
         <Link to="/signin">Sign-In</Link>
-        <Link to="/createaccount">Create Account</Link>
         <Link to="/restaurants">Restaurants</Link> 
       </div>
     </div>

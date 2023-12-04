@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import "./RestaurantList.css";
 import "../ShoppingCart/ShoppingCart.css";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 
-function RestaurantList() {
+function RestaurantList(props) {
   const [cart, setCart] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+
+  const navigate = useNavigate();
 
   const addToCart = (item) => {
     setCart([...cart, item]);
@@ -30,8 +33,12 @@ function RestaurantList() {
         total: orderTotal,
       };
 
+      navigate('/checkout',{state:{order}});
+
+
       setCart([]);
-      setOrderHistory([...orderHistory, order]);
+      setOrderHistory([...orderHistory]);
+
     }
   };
 
@@ -58,7 +65,7 @@ function RestaurantList() {
           {/* Add more restaurants as needed */}
         </ul>
       </section>
-      <ShoppingCart cart={cart} checkout={checkout} removeFromCart={removeFromCart} />
+      <ShoppingCart cart={cart} checkout={checkout} removeFromCart={removeFromCart}/>
     </div>
   );
 }

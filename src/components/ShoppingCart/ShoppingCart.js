@@ -36,7 +36,11 @@ class ShoppingCart extends Component {
               ))}
             </ul>
             <p>Total: ${cart.reduce((total, item) => total + item.price, 0).toFixed(2)}</p>
-            <button onClick={checkout}>Checkout</button>
+
+            {/* Use state to pass data to the Checkout component */}
+            <button onClick={checkout} className='checkout-button'>
+              Checkout
+            </button>
           </div>
         )}
       </div>
